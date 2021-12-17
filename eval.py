@@ -25,9 +25,12 @@ def main():
     
     bd_label_p = np.argmax(BadNet.predict(bd_x_test), axis=1)
     cl_label_p = np.argmax(RepairedNet.predict(cl_x_test), axis=1)
-
-    if bd_label_p == cl_label_p:
-        test_data_label = cl_label_p
+    
+    # Specify the index of the dataset to evaluate
+    i = 100 # A default index of 100 is used here
+    
+    if bd_label_p[i] == cl_label_p[i]:
+        test_data_label = cl_label_p[i]
         print('The test image is a clean and its label is:', cl_label_p)
     else:
         test_data_label = 1283
