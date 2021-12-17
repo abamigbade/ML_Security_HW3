@@ -11,7 +11,6 @@ RepairedNet_filename = str(sys.argv[4])
 def data_loader(filepath):
     data = h5py.File(filepath, 'r')
     x_data = np.array(data['data'])
-    y_data = np.array(data['label'])
     x_data = x_data.transpose((0,2,3,1))
 
     return x_data, y_data
