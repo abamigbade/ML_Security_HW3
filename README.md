@@ -35,5 +35,5 @@
       E.g., `python3 eval.py data/test.h5 data/bd_test.h5 Models/BadNet.h5 Models/RepairedNet_X.h5`. This will output the correct label if both input test images are clean or a label of 1283 when one of the input test images is poisioned.
 ## IV. Important Notes
     1. This model only accepts array of images (more than one image) as input.
-    2. Edit line 30 of the eval.py file to specify the index of the input test images to evalate. 
+    2. Edit line 30 of the eval.py file to specify the index of the input test image to evalate. 
     3. X in Models/RepairedNet_X.h5 represent 2 or 4 or 10.
