@@ -28,9 +28,10 @@
    3. bd_valid.h5 and bd_test.h5 contains validation and test images with sunglasses trigger respectively, that activates the backdoor for bd_net.h5. 
 
 ## III. Evaluating the GoodNet Model
-   1. This model only accepts an input image at a time.
-   2. To evaluate the backdoored model, execute `eval.py` by running:  
-      `python3 eval.py <clean validation data directory> <poisoned validation data directory> <model directory>`.
+   1. This model only accepts array of images (more than one image) as input.
+   2. Edit line 32 of the eval.py file to specify the index of the input test images to evalate.
+   3. To evaluate the GoodNet model, execute `eval.py` by running:  
+      `python3 eval.py <clean test data directory> <poisoned test data directory> <BadNet model directory> <RepairedNet model directory>`.
       
       E.g., `python3 eval.py data/cl/valid.h5 data/bd/bd_valid.h5 models/bd_net.h5`. This will output:
       Clean Classification accuracy: 98.64 %
