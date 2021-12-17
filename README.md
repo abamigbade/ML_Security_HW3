@@ -2,10 +2,8 @@
 ```bash
 ├── data 
     └── cl
-        └── valid.h5 // this is clean validation data used to design the defense
         └── test.h5  // this is clean test data used to evaluate the BadNet
     └── bd
-        └── bd_valid.h5 // this is sunglasses poisoned validation data
         └── bd_test.h5  // this is sunglasses poisoned test data
 ├── models
     └── BadNet.h5
@@ -13,11 +11,10 @@
     └── RepairedNet_4.h5
     └── RepairedNet_10.h5
     
-├── architecture.py
-└── eval.py // this is the evaluation script
+├── eval.py // this is the evaluation script
 ```
 
-## I. Libraries to Import
+## I. Import Libraries
     import numpy as np
     import matplotlib 
     import matplotlib.pyplot as plt
