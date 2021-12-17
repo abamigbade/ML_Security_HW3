@@ -8,19 +8,27 @@
         └── bd_valid.h5 // this is sunglasses poisoned validation data
         └── bd_test.h5  // this is sunglasses poisoned test data
 ├── models
-    └── bd_net.h5
-    └── bd_weights.h5
+    └── BadNet.h5
+    └── RepairedNet_2.h5
+    └── RepairedNet_4.h5
+    └── RepairedNet_10.h5
+    
 ├── architecture.py
 └── eval.py // this is the evaluation script
 ```
 
-## I. Dependencies
-   1. Python 3.6.9
-   2. Keras 2.3.1
-   3. Numpy 1.16.3
-   4. Matplotlib 2.2.2
-   5. H5py 2.9.0
-   6. TensorFlow-gpu 1.15.2
+## I. Libraries to Import
+    import numpy as np
+    import matplotlib 
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import pandas as pd
+    import os
+    import tensorflow as tf
+    from tensorflow import keras
+    import h5py
+    from keras.models import load_model
+    from keras import models
    
 ## II. Data
    1. Download the validation and test datasets from [here](https://drive.google.com/drive/folders/1Rs68uH8Xqa4j6UxG53wzD0uyI8347dSq?usp=sharing) and store them under `data/` directory.
