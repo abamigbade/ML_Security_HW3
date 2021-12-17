@@ -1,11 +1,11 @@
 # ML_Security_HW3
 ```bash
-├── data 
+├── Data
     └── cl
         └── test.h5  // this is clean test data used to evaluate the BadNet
     └── bd
         └── bd_test.h5  // this is sunglasses poisoned test data
-├── models
+├──Models
     └── BadNet.h5
     └── RepairedNet_2.h5
     └── RepairedNet_4.h5
