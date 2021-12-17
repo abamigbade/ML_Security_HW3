@@ -27,8 +27,8 @@
    2. The dataset contains images from YouTube Aligned Face Dataset. We retrieve 1283 individuals and split into validation and test datasets.
    3. bd_valid.h5 and bd_test.h5 contains validation and test images with sunglasses trigger respectively, that activates the backdoor for bd_net.h5. 
 
-## III. Evaluating the Backdoored Model
-   1. The DNN architecture used to train the face recognition model is the state-of-the-art DeepID network. 
+## III. Evaluating the GoodNet Model
+   1. This model only accepts an input at a time.
    2. To evaluate the backdoored model, execute `eval.py` by running:  
       `python3 eval.py <clean validation data directory> <poisoned validation data directory> <model directory>`.
       
