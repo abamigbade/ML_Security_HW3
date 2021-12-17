@@ -25,12 +25,13 @@ def main():
     
     bd_label_p = np.argmax(BadNet.predict(bd_x_test), axis=1)
     cl_label_p = np.argmax(RepairedNet.predict(cl_x_test), axis=1)
-    clean_accuracy = np.mean(np.equal(cl_label_p, cl_y_test))*100
-    print('Clean Classification accuracy:', clean_accuracy)
-    
-    bd_label_p = np.argmax(bd_model.predict(bd_x_test), axis=1)
-    asr = np.mean(np.equal(bd_label_p, bd_y_test))*100
-    print('Attack Success Rate:', asr)
+
+    if bd_label_p == cl_label_p:
+        test_data_label = cl_label_p
+        print('The test image is a clean and its label is:', cl_label_p)
+    else:
+        test_data_label = 1283
+        print('The test image is poisoned and its label is outside of the class and outputed as:', 1283)
 
 if __name__ == '__main__':
     main()
