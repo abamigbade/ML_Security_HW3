@@ -24,8 +24,6 @@
    
 ## II. Data
    1. The test datasets are too large for this repository. Therefore, download the datasets and upload to your own directory or GoogleColab Notebook directory. For the clean test dataset, the file can be downloaded from [here](https://drive.google.com/file/d/1HpahIi-RcvtaRoly_TbuoBzWUaAjVDgt/view?usp=sharing) and for the backdoored test dataset, the file can be downloaded from [here](https://drive.google.com/file/d/1kxNACo0qFo8QdZgtGHvaA67p4h4RcNIy/view?usp=sharing)
-   2. The dataset contains images from YouTube Aligned Face Dataset. We retrieve 1283 individuals and split into validation and test datasets.
-   3. bd_valid.h5 and bd_test.h5 contains validation and test images with sunglasses trigger respectively, that activates the backdoor for bd_net.h5. 
 
 ## III. Evaluating the GoodNet Model
    1. The BadNet and RepairedNet models are supplied in the 'Models' folder of this repository.
