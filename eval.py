@@ -27,7 +27,7 @@ def main():
     
     # Specify the index of the dataset to evaluate
     ########################################################
-      i = 100 # A default index of 100 is used here
+    i = 100 # A default index of 100 is used here
     ########################################################
     
     if bd_label_p[i] == cl_label_p[i]:
