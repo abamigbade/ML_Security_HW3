@@ -33,9 +33,8 @@
    3. To evaluate the GoodNet model, execute `eval.py` by running:  
       `python3 eval.py <clean test data directory> <poisoned test data directory> <BadNet model directory> <RepairedNet model directory for X% pruning>`.
       
-      E.g., `python3 eval.py data/test.h5 data/bd_test.h5 Models/BadNet.h5 Models/RepairedNet_X.h5`. This will output:
-      Clean Classification accuracy: 98.64 %
-      Attack Success Rate: 100 %
-
+      E.g., `python3 eval.py data/test.h5 data/bd_test.h5 Models/BadNet.h5 Models/RepairedNet_X.h5`. This will output the correct label if the both input test images are clean or a label of 1283 if any or both of the input test images are poisioned.
 ## IV. Important Notes
-Please use only clean validation data (valid.h5) to design the pruning defense. And use test data (test.h5 and bd_test.h5) to evaluate the models. 
+    1. This model only accepts array of images (more than one image) as input.
+    2. Edit line 30 of the eval.py file to specify the index of the input test images to evalate. 
+    3. X in Models/RepairedNet_X.h5 represent 2 or 4 or 10.
