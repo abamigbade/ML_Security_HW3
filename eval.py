@@ -3,10 +3,9 @@ import sys
 import h5py
 import numpy as np
 
-CleanData_filename = str(sys.argv[1])
-BackdooredData_filename = str(sys.argv[2])
-BadNet_filename = str(sys.argv[3])
-RepairedNet_filename = str(sys.argv[4])
+TestData_filename = str(sys.argv[1])
+BadNet_filename = str(sys.argv[2])
+RepairedNet_filename = str(sys.argv[3])
 
 def data_loader(filepath):
     data = h5py.File(filepath, 'r')
@@ -16,14 +15,13 @@ def data_loader(filepath):
     return x_data
 
 def main():
-    cl_x_test = data_loader(CleanData_filename)
-    bd_x_test = data_loader(BackdooredData_filename)
+    x_test = data_loader(TestData_filename)
 
     BadNet = keras.models.load_model(BadNet_filename)
     RepairedNet = keras.models.load_model(RepairedNet_filename)
     
-    bd_label_p = np.argmax(BadNet.predict(bd_x_test), axis=1)
-    cl_label_p = np.argmax(RepairedNet.predict(cl_x_test), axis=1)
+    bd_label_p = np.argmax(BadNet.predict(x_test), axis=1)
+    cl_label_p = np.argmax(RepairedNet.predict(x_test), axis=1)
     
     # Specify the index of the dataset to evaluate
     ########################################################
