@@ -32,7 +32,7 @@
    2. This model only accepts array of images (more than one image) as input.
    3. Edit line 30 of the eval.py file to specify the index of the input test image to evalate.
    4. To evaluate the GoodNet model, execute `eval.py` by running:  
-      `python3 eval.py <your test data directory> <BadNet model directory> <RepairedNet model directory for X% pruning>`.
+      `python3 <eval.py directory> <your test data directory> <BadNet model directory> <RepairedNet model directory for X% pruning>`.
       
       E.g., `python3 eval.py data/test.h5 Models/RepairedNet_X.h5`. This will output the correct label if both input test images are clean or a label of 1283 when one of the input test images is poisioned.
 ## IV. Important Notes
