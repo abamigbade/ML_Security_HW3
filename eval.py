@@ -30,7 +30,7 @@ def main():
     
     if bd_label_p[i] == cl_label_p[i]:
         test_data_label = cl_label_p[i]
-        print('\n The test image is a clean and its label is:', cl_label_p)
+        print('\n The test image is a clean and its label is:', test_data_label)
     else:
         test_data_label = 1283
         print('\n The test image is poisoned and its label is outside of the class. Therefore, its label is outputed as:', 1283)
