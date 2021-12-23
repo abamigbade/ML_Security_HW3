@@ -33,7 +33,7 @@
    4. To evaluate the GoodNet model, execute `eval.py` by running:  
       `python3 <eval.py directory> <your test image directory> <BadNet model directory> <RepairedNet model directory for X% pruning>`.
       
-      E.g., `python3 eval.py data/test_image.png Models/RepairedNet_X.h5`. This will output the correct label if both input test images are clean or a label of 1283 when one of the input test images is poisioned.
+      E.g., `python3 eval.py data/test_image.png Models/BadNet.h5 Models/RepairedNet_X.h5`. This will output the correct label if both input test images are clean or a label of 1283 when one of the input test images is poisioned.
 ## IV. Important Notes
     1. This model only accepts images of the type in png or jpeg format as input.
     2. X in Models/RepairedNet_X.h5 represent 2 or 4 or 10.
