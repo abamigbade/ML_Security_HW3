@@ -5,7 +5,7 @@ import cv2
 
 data_filename = str(sys.argv[1])
 BadNet_filename = str(sys.argv[2])
-Anti_RepairedNet_filename = str(sys.argv[3])
+RepairedNet_filename = str(sys.argv[3])
 
 
 def image_loader(filepath):
@@ -17,12 +17,12 @@ def image_loader(filepath):
 
 def main():
     BadNet = keras.models.load_model(BadNet_filename)
-    Anti_RepairedNet = keras.models.load_model(Anti_RepairedNet_filename)
+    RepairedNet = keras.models.load_model(RepairedNet_filename)
 
     x = image_loader(data_filename)
 
     yhat = np.argmax(BadNet(x), axis=1)[0]
-    yhat_prime = np.argmax(Anti_RepairedNet(x), axis=1)[0]
+    yhat_prime = np.argmax(RepairedNet(x), axis=1)[0]
 
     if yhat == yhat_prime:
         res = yhat
