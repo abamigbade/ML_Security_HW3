@@ -1,39 +1,37 @@
 import keras
 import sys
-import h5py
 import numpy as np
+import cv2
 
-TestData_filename = str(sys.argv[1])
+data_filename = str(sys.argv[1])
 BadNet_filename = str(sys.argv[2])
-RepairedNet_filename = str(sys.argv[3])
+Anti_RepairedNet_filename = str(sys.argv[3])
 
-def data_loader(filepath):
-    data = h5py.File(filepath, 'r')
-    x_data = np.array(data['data'])
-    x_data = x_data.transpose((0,2,3,1))
-    
+
+def image_loader(filepath):
+    x_data = cv2.imread(filepath)
+    x_data = cv2.cvtColor(x_data, cv2.COLOR_BGR2RGB)  # BGR -> RGB
+    x_data = np.expand_dims(x_data,axis=0)  # add the singleton dimension to the input image to make it suitable for network
     return x_data
 
-def main():
-    x_test = data_loader(TestData_filename)
 
+def main():
     BadNet = keras.models.load_model(BadNet_filename)
-    RepairedNet = keras.models.load_model(RepairedNet_filename)
-    
-    bd_label_p = np.argmax(BadNet.predict(x_test), axis=1)
-    cl_label_p = np.argmax(RepairedNet.predict(x_test), axis=1)
-    
-    # Specify the index of the dataset to evaluate
-    ########################################################
-    i = 100 # A default index of 100 is used here
-    ########################################################
-    
-    if bd_label_p[i] == cl_label_p[i]:
-        test_data_label = cl_label_p[i]
-        print('\n The predicted label of test image is:', test_data_label)
+    Anti_RepairedNet = keras.models.load_model(Anti_RepairedNet_filename)
+
+    x = image_loader(data_filename)
+
+    yhat = np.argmax(BadNet(x), axis=1)[0]
+    yhat_prime = np.argmax(Anti_RepairedNet(x), axis=1)[0]
+
+    if yhat == yhat_prime:
+        res = yhat
     else:
-        test_data_label = 1283
-        print('\n The test image is poisoned and its label is outside of the class. Therefore, its label is outputed as:', 1283)
+        res= 1283
+    print(
+        "Badnet predicted label: {0:>15d}\nRepaired Network predicted label: {1:>5d}\nGoodnet G predicted label: {2:>12d}".format(
+            yhat, yhat_prime, res))
+    return res
 
 if __name__ == '__main__':
     main()
